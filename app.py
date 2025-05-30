@@ -10,16 +10,75 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 # HTML template
 HTML = '''
 <!doctype html>
-<title>PDF to Excel</title>
-<h1>Upload PDF to Convert to Excel</h1>
-<form method=post enctype=multipart/form-data>
-  <input type=file name=file accept=".pdf">
-  <input type=submit value=Upload>
-</form>
-{% if download_link %}
-  <p><a href="{{ download_link }}">Download Excel File</a></p>
-{% endif %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PDF to Excel Converter</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+    form {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    input[type="file"] {
+      margin-bottom: 20px;
+    }
+    input[type="submit"] {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    input[type="submit"]:hover {
+      background: #45a049;
+    }
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      color: #2196F3;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>PDF to Excel Converter</h1>
+  <form method="post" enctype="multipart/form-data">
+    <input type="file" name="file" accept=".pdf" required>
+    <input type="submit" value="Upload and Convert">
+  </form>
+  {% if download_link %}
+    <a href="{{ download_link }}">⬇️ Download Excel File</a>
+  {% endif %}
+</body>
+</html>
 '''
+
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
