@@ -67,6 +67,7 @@ HTML = '''
   </style>
 </head>
 <body>
+    <img src="logo.png" alt="Logo" style="width: 200px;">
   <h1>PDF to Excel Converter</h1>
   <form method="post" enctype="multipart/form-data">
     <input type="file" name="file" accept=".pdf" required>
