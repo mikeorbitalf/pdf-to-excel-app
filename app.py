@@ -67,7 +67,8 @@ HTML = '''
   </style>
 </head>
 <body>
-    <img src="logo.png" alt="Logo" style="width: 200px;">
+<img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" style="max-width: 200px;">
+
   <h1>PDF to Excel Converter</h1>
   <form method="post" enctype="multipart/form-data">
     <input type="file" name="file" accept=".pdf" required>
